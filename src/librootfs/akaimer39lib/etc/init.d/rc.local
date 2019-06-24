@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Mount sd card
+mount /dev/mmcblk0p1 /mnt
+
+# Adding Hwclock to the system
+echo ds1307 0x68 > /sys/class/i2c-adapter/i2c-0/new_device
+hwclock --hctosys
+
+echo "5120" > /proc/sys/vm/min_free_kbytes
+chmod 600 /etc/.rsync
+ifup usb0
+telnetd
+ifplugd -an -u3 -d3 -i usb0 &
+
+if [ -f /mnt/interfaces ]
+then
+/etc/init.d/setup.sh &
+fi

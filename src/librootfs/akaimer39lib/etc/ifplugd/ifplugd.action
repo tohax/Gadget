@@ -1,0 +1,12 @@
+#!/bin/sh
+iface="$1"
+action="$2"
+
+case "$action" in
+  up)
+/etc/init.d/on.sh &
+  ;;
+  down)
+/etc/init.d/off.sh &
+    ;;
+esac

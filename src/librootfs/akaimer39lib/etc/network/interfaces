@@ -1,0 +1,8 @@
+auto usb0
+iface usb0 inet static
+        address 10.10.10.2
+        netmask 255.255.255.0
+        network 10.10.10.0
+        broadcast 10.10.10.255
+#host=test
+#server=10.10.10.1
