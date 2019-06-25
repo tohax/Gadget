@@ -4,9 +4,16 @@ action="$2"
 
 case "$action" in
   up)
-/etc/init.d/on.sh &
+	if [ -f "$FILE" ]; then
+                rm -rf $FILE
+                /etc/init.d/on.sh &
+        else
+                touch $FILE
+                sleep 5
+                reboot
+        fi
   ;;
   down)
-/etc/init.d/off.sh &
+	/etc/init.d/off.sh &
     ;;
 esac
