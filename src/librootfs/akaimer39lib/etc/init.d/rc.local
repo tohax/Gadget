@@ -10,8 +10,10 @@ hwclock --hctosys
 echo "5120" > /proc/sys/vm/min_free_kbytes
 chmod 600 /etc/.rsync
 ifup usb0
+crond
+#dropbear -B
 /usr/bin/telnetd
-ifplugd -an -u5 -d5 -i usb0 &
+ifplugd -an -u3 -d3 -i usb0 &
 
 if [ -f /mnt/interfaces ]
 then
