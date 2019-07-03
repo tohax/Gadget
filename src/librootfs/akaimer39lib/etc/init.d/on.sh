@@ -12,7 +12,7 @@ find /mnt/ -name "*index" -exec rm {} \;
 time=`date +%Y%m%d`
 echo `date` > /etc/`hostname`_on.txt
 rsync -avW --remove-source-files --password-file=/etc/.rsync /etc/`hostname`_on.txt root@$Server::log/$time/
-rsync -avW --remove-source-files --log-file=/etc/`hostname`_ready.txt --password-file=/etc/.rsync /mnt/ root@$Server::counter_1/
+rsync -avW --no-perms --no-o --no-g  --remove-source-files --log-file=/etc/`hostname`_ready.txt --password-file=/etc/.rsync /mnt/ root@$Server::counter_1/
 rsync -avW --remove-source-files --password-file=/etc/.rsync /etc/`hostname`_ready.txt root@$Server::log/$time/
 find /mnt/[1-9]* -type d -delete 2>/dev/null
 echo none > /sys/class/leds/g_led/trigger
