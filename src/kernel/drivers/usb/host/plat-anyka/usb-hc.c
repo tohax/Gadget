@@ -914,7 +914,7 @@ irqreturn_t akotg_dma_irq(int irqnum, void *__hcd)
 	} else if (akotg_usbhc_irq(hcd) == IRQ_NONE) {
 		rc = IRQ_NONE;
 	} else {
-		set_bit(HCD_FLAG_SAW_IRQ, &hcd->flags); // ???
+	//	set_bit(HCD_FLAG_SAW_IRQ, &hcd->flags); // ???
 
 		if (unlikely(hcd->state == HC_STATE_HALT))
 			usb_hc_died(hcd);

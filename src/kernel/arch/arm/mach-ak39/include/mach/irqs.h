@@ -15,7 +15,7 @@
  */
 #define	IRQ_MEM					AK39_IRQ(0)
 #define	IRQ_CAMERA				AK39_IRQ(1)
-#define	IRQ_VIDEO_ENCODER		AK39_IRQ(2)
+#define	IRQ_VIDEO_ENCODER			AK39_IRQ(2)
 #define	IRQ_SYSCTRL				AK39_IRQ(3)
 #define	IRQ_MCI					AK39_IRQ(4)
 #define	IRQ_SDIO				AK39_IRQ(5)

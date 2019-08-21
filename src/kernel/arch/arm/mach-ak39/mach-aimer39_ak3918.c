@@ -199,7 +199,7 @@ static struct akotghc_usb_platform_data akotghc_plat_data = {
  * 
  * @author: caolianming
  * @date: 2014-01-09
-
+ */
 static struct ak_mac_data ak39_mac_pdata = {
 	.gpio_init = ak_gpio_set,
 	.pwr_gpio = {
@@ -219,7 +219,7 @@ static struct ak_mac_data ak39_mac_pdata = {
 		.int_pol	= -1,
 	},
 };
-**/
+
 
 /**
 * @brief		ak pcm device struct
@@ -480,17 +480,17 @@ static struct akgpio_keys_platform_data gpio_keys_platform_data = {
 	&ak39_custom_gpio,
 	&ak39_usb_udc_device,
 	&ak39_usb_otg_hcd_device,
-	//&anyka_wifi_device,
+	&anyka_wifi_device,
 	&soc_camera_interface,
 	&ak39_camera_interface,
 	&ak39_ion_device,
 	&ak39_pcm_device,
 	&ak39_codec_device,
 	&ak39_mmx_device,
-	//&ak39_mac_device,
+	&ak39_mac_device,
 	&ak39_led_pdev,
 	&ak39_gpio_keys_device,
-	//&ak39_rtc_device,
+	&ak39_rtc_device,
 	&ak39_crypto_device,
 };
 
@@ -533,7 +533,7 @@ static void __init ak3918_init_machine(void)
 
 	ak39_usb_otg_hcd_device.dev.platform_data = &akotghc_plat_data;
 
-	//ak39_mac_device.dev.platform_data = &ak39_mac_pdata;
+	ak39_mac_device.dev.platform_data = &ak39_mac_pdata;
 
 	ak39_led_pdev.dev.platform_data = &led_pdata;
 	ak39_gpio_keys_device.dev.platform_data = &gpio_keys_platform_data;

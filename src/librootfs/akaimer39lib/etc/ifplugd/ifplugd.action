@@ -1,19 +1,13 @@
 #!/bin/sh
 iface="$1"
 action="$2"
-FILE=/etc/re
+
 case "$action" in
   up)
-	if [ -f "$FILE" ]; then
-                rm -rf $FILE
-                /etc/init.d/on.sh &
-        else
-                touch $FILE
-                sleep 5
-                reboot
-        fi
-  ;;
+     exec /etc/init.d/on.sh &
+     ;;
   down)
-	/etc/init.d/off.sh &
-    ;;
+     exec /etc/init.d/off.sh &
+     ;;
 esac
+

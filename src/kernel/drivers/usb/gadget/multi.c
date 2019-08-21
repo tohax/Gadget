@@ -219,8 +219,8 @@ static __init int cdc_do_config(struct usb_configuration *c)
 	if (ret < 0)
 		return ret;
 
-//	ret = acm_bind_config(c, 0);
-//	if (ret < 0)
+	//ret = acm_bind_config(c, 0);
+	//if (ret < 0)
 //		return ret;
 
 	ret = fsg_bind_config(c->cdev, c, &fsg_common);
@@ -273,11 +273,6 @@ static int __ref multi_bind(struct usb_composite_dev *cdev)
 	if (status < 0)
 		return status;
 
-	/* set up serial link layer */
-//	status = gserial_setup(cdev->gadget, 1);
-//	if (status < 0)
-//		goto fail0;
-
 	/* set up mass storage function */
 	{
 		void *retp;
@@ -320,8 +315,6 @@ static int __ref multi_bind(struct usb_composite_dev *cdev)
 	/* error recovery */
 fail2:
 	fsg_common_put(&fsg_common);
-//fail1:
-//	gserial_cleanup();
 fail1:
 	gether_cleanup();
 	return status;

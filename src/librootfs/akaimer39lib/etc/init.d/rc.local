@@ -7,13 +7,16 @@ mount /dev/mmcblk0p1 /mnt
 echo ds1307 0x68 > /sys/class/i2c-adapter/i2c-0/new_device
 hwclock --hctosys
 
+if [ ! -f /etc/mtab ]; then ln -s /proc/mounts /etc/mtab; fi
+
 echo "5120" > /proc/sys/vm/min_free_kbytes
-chmod 600 /etc/.rsync
+
+chmod 600 .rsync
+
+ifplugd -an -t 5 -u1 -d4 -i usb0 &
 ifup usb0
+
 crond
-#dropbear -B
-/usr/bin/telnetd
-ifplugd -an -u3 -d3 -i usb0 &
 
 if [ -f /mnt/interfaces ]
 then
